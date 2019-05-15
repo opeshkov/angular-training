@@ -1,0 +1,11 @@
+.menu, .submenu {
+  list-style: none;
+}
+
+.menu-item {
+  border: 2px solid #000;
+  background-color: #272cad;
+  color: #fff;
+  padding: 5px;
+  cursor: pointer;
+}

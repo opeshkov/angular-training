@@ -1,0 +1,7 @@
+# Editors specific files
+.idea/
+
+# Dependency directories
+node_modules/
+
+
