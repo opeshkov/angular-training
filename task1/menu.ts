@@ -1,24 +1,28 @@
 type menuItem = { title: string, items: (string | menuItem)[]};
 type menu = menuItem[];
 
-function createMenu(menuStructure: menu, containerId: string): void {
-  const container = document.getElementById(containerId);
+function createMenu(menuStructure: menu, containerId: string): HTMLUListElement {
+  const container: HTMLDivElement = document.getElementById(containerId) as HTMLDivElement;
   const ul = document.createElement('ul');
-  ul.className = 'menu'
-  for (let mainItem of menuStructure) {
+
+  ul.className = 'menu';
+
+  for (const mainItem of menuStructure) {
     const li = createMenuItem();
     li.innerText = mainItem.title;
     ul.appendChild(li);
     createSubMenu(mainItem.items, li);
   }
-  container.appendChild(ul);
+
+  return container.appendChild(ul);
 }
 
-function createSubMenu(items: (string | menuItem)[], container: HTMLElement) : void {
+function createSubMenu(items: (string | menuItem)[], container: HTMLElement): HTMLUListElement {
   const ul = document.createElement('ul');
   ul.className = 'submenu';
   ul.style.display = 'none';
-  for (let item of items) {
+
+  for (const item of items) {
     const li = createMenuItem();
     if (typeof item === 'string') {
       li.innerText = item;
@@ -28,21 +32,27 @@ function createSubMenu(items: (string | menuItem)[], container: HTMLElement) : v
     }
     ul.appendChild(li);
   }
-  container.appendChild(ul);
+
+  return container.appendChild(ul);
 }
 
-function createMenuItem() : HTMLElement {
+function createMenuItem(): HTMLElement {
   const li = document.createElement('li');
   li.className = 'menu-item';
   li.addEventListener('click', clickHandler);
+
   return li;
 }
 
-function clickHandler(e) {
-  let submenus = e.target.getElementsByClassName('submenu')
+function clickHandler(e: MouseEvent) {
+  e.stopPropagation();
+
+  const currentElement = e.target as HTMLElement;
+  let submenus: HTMLCollection = currentElement.getElementsByClassName('submenu');
+
   if (submenus.length) {
     // Toggle current submenu state
-    const submenu = submenus[0]
+    const submenu = submenus[0] as HTMLElement;
     if (submenu.style.display === 'block') {
       submenu.style.display = 'none'
     } else {
@@ -51,11 +61,11 @@ function clickHandler(e) {
   } else {
     // Close all submenus
     submenus = document.getElementsByClassName('submenu')
-    for (let submenu of submenus) {
+    for (let submenu of Array.prototype.slice.call(submenus)) {
       submenu.style.display = 'none'
     }
   }
-  e.stopPropagation()
+
 }
 
 //  Test data
