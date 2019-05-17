@@ -54,15 +54,16 @@ function clickHandler(e: MouseEvent) {
     // Toggle current submenu state
     const submenu = submenus[0] as HTMLElement;
     if (submenu.style.display === 'block') {
-      submenu.style.display = 'none'
+      submenu.style.display = 'none';
     } else {
-      submenu.style.display = 'block'
+      submenu.style.display = 'block';
     }
   } else {
     // Close all submenus
     submenus = document.getElementsByClassName('submenu')
-    for (let submenu of Array.prototype.slice.call(submenus)) {
-      submenu.style.display = 'none'
+    for (let i = 0; i < submenus.length; i++) {
+      const submenu = submenus[i] as HTMLElement;
+      submenu.style.display = 'none';
     }
   }
 
