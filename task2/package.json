@@ -1,0 +1,10 @@
+{
+  "name": "task2",
+  "version": "1.0.0",
+  "description": "Task#2 from Angular-Training",
+  "author": "opeshkov",
+  "license": "ISC",
+  "dependencies": {
+    "rxjs": "^6.5.2"
+  }
+}
