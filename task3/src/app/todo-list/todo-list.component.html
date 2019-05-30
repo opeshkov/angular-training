@@ -1,0 +1,23 @@
+<section class="main">
+  <header>
+    <h1 class="header">Todos</h1>
+    <mat-form-field class="todo-input">
+      <input #todoInput matInput placeholder="What needs to be done?" (keyup.enter)="addItem(todoInput)">
+    </mat-form-field>
+  </header>
+  <section>
+    <ul class="todo-list" *ngIf="todoItems.length > 0">
+      <li *ngFor="let todoItem of todoItems" [class.completed]="todoItem.complete">
+        <mat-checkbox (click)="toggleComplete(todoItem)">
+          <span class="checkbox-label">{{todoItem.title}}</span>
+        </mat-checkbox>
+        <span (click)="removeItem(todoItem)">
+          <mat-icon class="remove-icon">close</mat-icon>
+        </span>
+      </li>
+    </ul>
+  </section>
+  <footer *ngIf="todoItems.length > 0">
+    {{todoItems.length}} item{{todoItems.length > 1 ? 's' : ''}} left.
+  </footer>
+</section>
