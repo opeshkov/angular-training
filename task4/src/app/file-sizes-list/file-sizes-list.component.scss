@@ -1,0 +1,17 @@
+.main {
+  margin: 50px 200px;
+
+  .size-input {
+    width: 200px;
+  }
+
+  .sizes-list {
+    list-style: none;
+    width: 200px;
+    padding: 0;
+
+    li {
+      font-weight: bold;
+    }
+  }
+}

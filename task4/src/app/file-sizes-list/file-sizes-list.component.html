@@ -1,0 +1,14 @@
+<section class="main">
+  <header>
+    <mat-form-field class="size-input">
+      <input #sizeInput matInput type="number" placeholder="Please enter size of file" (keyup.enter)="addItem(sizeInput)">
+    </mat-form-field>
+  </header>
+  <section>
+    <ul class="sizes-list" *ngIf="fileSizes.length > 0">
+      <li *ngFor="let fileSize of fileSizes" [appColoredSize]="fileSize">
+        {{fileSize | formatSize}}
+      </li>
+    </ul>
+  </section>
+</section>
