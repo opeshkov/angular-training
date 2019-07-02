@@ -1,0 +1,40 @@
+.main {
+  width: 500px;
+  margin: 0 auto;
+
+  input {
+    font-size: 20px;
+    width: 400px;
+  }
+
+  button {
+    font-size: 20px;
+    width: 70px;
+    margin-left: 10px;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    background: #4d4e4f;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .remove-icon {
+      font-size: 11px;
+      position: relative;
+      top: -7px;
+      cursor: pointer;
+    }
+  }
+}

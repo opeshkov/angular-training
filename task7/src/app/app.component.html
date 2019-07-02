@@ -1,0 +1,5 @@
+<div class="main" [formGroup]="tagsFormGroup">
+  <app-tags-input formControlName="tags"></app-tags-input>
+  <div class="validationError" *ngIf="!tagsFormGroup.valid">Some of tags are not in predefined list. Predefined values are ({{predefinedTags.join(', ')}}).</div>
+</div>
+
