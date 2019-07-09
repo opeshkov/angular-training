@@ -9,8 +9,7 @@ import { of } from "rxjs";
 import { ArticleCreateComponent } from '../article-create/article-create.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {By} from "@angular/platform-browser";
-import {articles, ArticlesService} from "../articles.service";
-import {delay} from "rxjs/operators";
+import {ArticlesService} from "../articles.service";
 
 describe('ArticleListComponent', () => {
   let component: ArticleListComponent;
@@ -31,7 +30,7 @@ describe('ArticleListComponent', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            queryParams: of({new: false})
+            queryParams: of({new: true})
           }
         },
         {
@@ -88,14 +87,11 @@ describe('ArticleListComponent', () => {
   }));
 
   it('should show has new article alert when route params contain a flag', fakeAsync(() => {
-    // fixture.detectChanges();
-    // tick(3000);
-    // TestBed.overrideProvider(ActivatedRoute, { useValue: { queryParams: of({new: true})}})
-    // fixture.detectChanges();
-    // // tick(10000);
-    // // fixture.detectChanges();
-    // const successCreationAlertText = debugElement.query(By.css('.alert-success')).nativeElement.innerText;
-    // expect(successCreationAlertText).toEqual('Article has been created successfully!');
+    fixture.detectChanges();
+    tick(3000);
+    fixture.detectChanges();
+    const successCreationAlertText = debugElement.query(By.css('.alert-success')).nativeElement.innerText;
+    expect(successCreationAlertText).toEqual('Article has been created successfully!');
   }));
 
 });

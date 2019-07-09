@@ -6,7 +6,7 @@ import { IArticle } from './iarticle';
 
 let idCounter = 0;
 
-export const articles: IArticle[] = [
+const articles: IArticle[] = [
   {
     id: ++idCounter,
     title: 'The first article',
