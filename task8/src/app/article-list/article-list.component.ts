@@ -26,7 +26,6 @@ export class ArticleListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._queryParamsSubscription = this._activatedRoute.queryParams
       .subscribe((queryParams: { [key: string]: string }) => {
-        console.log(queryParams)
         this._hasNewArticle = !!queryParams.new;
       });
 
